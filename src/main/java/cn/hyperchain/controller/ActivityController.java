@@ -10,7 +10,13 @@ public class ActivityController {
     @RequestMapping("/test")
     @ResponseBody
     public String test() {
-        return "hello";
+        return "hello3";
+    }
+
+    @RequestMapping("/test2")
+    @ResponseBody
+    public String test2() {
+        return "hello2";
     }
 
 }
