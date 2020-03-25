@@ -1,8 +1,11 @@
 package cn.hyperchain.dao;
 
+import cn.hyperchain.dto.QueryDTO;
 import cn.hyperchain.pojo.SysUser;
 import cn.hyperchain.pojo.SysUserExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysUserMapper {
@@ -27,4 +30,10 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    List<SysUser> findByPage(QueryDTO queryDTO);
+
+    List<Map<String,Object>> exportUser();
+
+    public SysUser findByUsername(String username);
 }

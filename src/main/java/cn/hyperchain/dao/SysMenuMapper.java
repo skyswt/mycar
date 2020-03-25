@@ -1,8 +1,11 @@
 package cn.hyperchain.dao;
 
+import cn.hyperchain.dto.QueryDTO;
 import cn.hyperchain.pojo.SysMenu;
 import cn.hyperchain.pojo.SysMenuExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysMenuMapper {
@@ -11,6 +14,8 @@ public interface SysMenuMapper {
     int deleteByExample(SysMenuExample example);
 
     int deleteByPrimaryKey(Long menuId);
+
+    int deleteMenu(List<Long> ids);
 
     int insert(SysMenu record);
 
@@ -27,4 +32,14 @@ public interface SysMenuMapper {
     int updateByPrimaryKeySelective(SysMenu record);
 
     int updateByPrimaryKey(SysMenu record);
+
+    List<SysMenu> findMenuByPage(QueryDTO query);
+
+    List<SysMenu> findMenu();
+
+    List<String> findPermsByUserId(@Param("userId") Long userId);
+
+    List<Map<String,Object>> findDirMenuByUserId(@Param("userId") Long userId);
+
+    List<Map<String,Object>> findMenuNotButtonByUserId(@Param("userId") Long userId, @Param("parentId") Long parentId);
 }
